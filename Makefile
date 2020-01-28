@@ -4,9 +4,7 @@ BUILD := \
 
 DEPS := \
 	beamerthemegemini.sty \
-	beamercolorthemegemini.sty \
-	beamercolorthememit.sty \
-	beamercolorthemelabsix.sty \
+	beamercolorthemegemini.sty
 
 
 LATEX  := lualatex

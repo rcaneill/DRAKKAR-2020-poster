@@ -57,8 +57,9 @@ state investigated using Numerical Experiments}
 % ====================
 
 \footercontent{
-  \href{https://github.com/rcaneill/}{https://github.com/rcaneill/} \hfill
-  DRAKKAR, Grenoble, 2020 \hfill
+  \href{https://github.com/rcaneill/DRAKKAR-2020-poster}
+       {https://github.com/rcaneill/DRAKKAR-2020-poster} \hfill
+%%  DRAKKAR, Grenoble, 2020 \hfill
   \href{mailto:romain.caneill@gu.se}{romain.caneill@gu.se}}
 % (can be left out to remove footer)
 
@@ -81,18 +82,20 @@ state investigated using Numerical Experiments}
 \separatorcolumn
 
 \begin{column}{1.3\colwidth}
+  \vspace{1.65cm}
   \begin{block}{Context}
     Transition zones between saline warm subtropical water and
     cold fresh subpolar water arise
-    abruptly. These boundaries are called oceanic front
-    and have similar structures on the North
+    abruptly. These boundaries are called oceanic fronts
+    and have similar structures in the North
     Atlantic Ocean, the North Pacific Ocean and
     the Southern Ocean, suggesting that the same
     processes lead to these frontal structures.
-    A hypothesis to study lies in the nonlinearity of
-    the equation of state for seawater, the
+    The nonlinearities of
+    the equation of state for seawater -- the
     relation that gives density as a function of
-    pressure, salinity and temperature.
+    pressure, salinity, and temperature --
+    are expected to constraint these fronts.
     To test this hypothesis, we are developing
     an idealized triple-gyre configuration with the
     ocean global circulation model NEMO (Nucleus for
@@ -108,7 +111,7 @@ state investigated using Numerical Experiments}
     \begin{itemize}
     \item We analyzed the sensitivity of transition zones to perturbations of the
       nonlinear equation of state.
-    \item We ran 5 experiments, perturbing the cabbeling
+    \item We ran 5 experiments, varying the cabbeling
       parameter $\lambda_1$ from $3.952 \cdot 10^{-2}$ to $7.952 \cdot 10^{-2}$
       \,$(^\circ\text{C})^{-1}$, and analyzing the resulting
       stratification and circulation.
@@ -210,18 +213,19 @@ state investigated using Numerical Experiments}
           stratified by the temperature only,
           the yellow areas (round background) are the beta-ocean stratified
           by the salinity only and
-          the gray zones (dash background) are doubly stratified.
-          The white line represents the mixed layer depth.}
+          the gray zones are doubly stratified.
+          The white line represents the diagnostic mixed layer depth
+          and the white dashed area is the mixed layer.}
       \end{figure}
 
-      \heading{Take home message}
+      \heading{Conclusion}%{Take home message}
         With the increase of the cabbeling parameter $\lambda_1$, the stratification
-        becomes sensitive to salinity at higher temperature.
+        becomes less sensitive to the temperature more south in the basin.
         As the northern area is stabilized by a strong halocline due to
-        fresh surface water, the salinity takes control of the stratification
-        further south, pushing the transition zone south. This is accompanied
-        by a more southern convection zone and thus a convection of warmer
-        and saltier water.
+        fresh surface water, the salinity control of the stratification
+        pushes the transition zone to the south. This is accompanied
+        by a more southern convection zone and thus a creation of warmer
+        and saltier deep water.
         An unexpected effect is the reduction of the overturning strength
         with cabbeling.
     \end{minipage}
@@ -233,8 +237,8 @@ state investigated using Numerical Experiments}
 \separatorcolumn
 
 \begin{column}{0.7\colwidth}
- 
-  \begin{alertblock}{Thermodynamic properties}
+  \vspace{1.65cm}
+  \begin{exampleblock}{Thermodynamic properties}
     \heading{The nonlinear equation of state}
     We use the simplified nonlinear equation of state proposed
     by \citet{roquet_defining_2015}.
@@ -243,10 +247,16 @@ state investigated using Numerical Experiments}
       \rho(\Theta, S_A, Z) &= \overline{\rho}(Z)
       - \frac{C_b}{2} \qty(\Theta - \Theta_0)^2
       - T_h Z \Theta
-      + b_o S_A \\
-      \overline{\rho}(Z) &= \rho_0 - b_0 S_0 + \frac{a_0^2}{2 C_b}
-      + T_h Z T_0
+      + b_o S_A
     \end{align}
+
+    The term $\overline{\rho}(Z)$ does not play a role in the
+    ocean dynamics.
+
+    %% \begin{align}
+    %%   \overline{\rho}(Z) &= \rho_0 - b_0 S_0 + \frac{a_0^2}{2 C_b}
+    %%   + T_h Z T_0
+    %% \end{align}
 
     \begin{align}
       \alpha = \frac{1}{\rho_0} \qty[C_b (\Theta - \Theta_0) + T_h Z]
@@ -254,29 +264,6 @@ state investigated using Numerical Experiments}
       \beta = \frac{b_0}{\rho_0}
     \end{align}
     
-    \heading{Numerical values of the parameters}
-    \begin{align*}
-        C_b &= 9.851 \cdot 10^{-3} \text{\,kg}\text{\,m}^{-3}\text{\,K}^{-2} \\
-        \Theta_0 &= -6.801\text{\,}^\circ\text{C} \\
-        T_h &= 2.478 \cdot 10^{-5} \text{\,kg}\text{\,m}^{-4}\text{\,K}^{-1}\\
-        a_0 &= 1.655 \cdot 10^{-1} \text{\,kg\,m}^{-3}\text{\,K}^{-1} \\
-        b_0 &= 7.6554 \cdot 10^{-1} \text{\,kg\,m}^{-3}\text{\,(g kg}^{-1}\text{)}^{-1} \\
-        \rho_0 &= 1026 \text{\,kg\,m}^{-3} \\
-        T_0 &= 10\text{\,}^\circ\text{C}
-    \end{align*}
-
-    \heading{NEMO simplified EOS equivalence \emph{(ln\_seos=.true.)}} 
-    \begin{align*}
-      a_0 = a_0 &\qand
-      b_0 = b_0 \\
-      C_b = a_0 \cdot \lambda_1 &\qand
-      \lambda_2 = 0 \\
-      T_h = a_0 \cdot \mu_1 &\qand
-      \mu_2 = 0 \\
-      \nu = 0 &\qand \Theta_0 = T_0 - {1}/{\lambda_1}
-    \end{align*}
-
-
     \heading{The stratification ratio}
     The stratification ratio $R$ determines if the water column is stratified
     by the temperature only ($R>1$), by the salinity only ($R<-1$) or doubly
@@ -298,19 +285,47 @@ state investigated using Numerical Experiments}
     the cabbeling term is perturbed, leading to a different polar stratification:
     the nonlinearities of the equation of state are an essential parameter.
     
-    
+   
     \begin{figure}
-      \includegraphics[width=4in]{strati}
-      \caption{Temperature, salinity and buoyancy frequency profiles
+      \includegraphics[width=7in]{strati}
+      \caption{Temperature, salinity and buoyancy frequencies profiles
         in a beta-ocean ($19\,^\circ\text{E}$, $55\,^\circ\text{N}$).}
-      
     \end{figure}
+
+
+    \heading{Reference numerical values of the parameters}
+    \vspace{-1.5cm}
+    \begin{align*}
+        C_b &= 9.851 \cdot 10^{-3} \text{\,kg}\text{\,m}^{-3}\text{\,K}^{-2} \\
+        \Theta_0 &= -6.801\text{\,}^\circ\text{C} \\
+        T_h &= 2.478 \cdot 10^{-5} \text{\,kg}\text{\,m}^{-4}\text{\,K}^{-1}\\
+        %a_0 &= 1.655 \cdot 10^{-1} \text{\,kg\,m}^{-3}\text{\,K}^{-1} \\
+        b_0 &= 7.6554 \cdot 10^{-1} \text{\,kg\,m}^{-3}\text{\,(g kg}^{-1}\text{)}^{-1} \\
+        \rho_0 &= 1026 \text{\,kg\,m}^{-3} \\
+        %T_0 &= 10\text{\,}^\circ\text{C}
+    \end{align*}
+
+    \heading{NEMO simplified EOS equivalence}% \emph{(ln\_seos=.true.)}}
+    Implemented equation of state:
+    \begin{align}
+      \rho(\Theta, S_A, z) =
+      \rho_0 -a_{0}\left(1+0.5 \lambda_1 \Delta\Theta+\mu_{1} z\right) \cdot \Delta\Theta
+      +b_{0} \cdot \Delta S      
+    \end{align}
+    \begin{align*}
+      \Delta\Theta = \Theta - 10 &\qand
+      \Delta S = S_A - 35 \\
+      C_b = a_0 \cdot \lambda_1 & \qand
+      T_h = a_0 \cdot \mu_1 \\
+      \Theta_0 = 10 - {1}/{\lambda_1} &\qand
+      a_0 = 1.655 \cdot 10^{-1} \text{\,kg\,m}^{-3}\text{\,K}^{-1} 
+    \end{align*}
     
-  \end{alertblock}
+  \end{exampleblock}
 
   %\vspace{2in}
   
-  \begin{alertblock}{xbasin and xnemogcm python packages}
+  \begin{exampleblock}{xbasin and xnemogcm python packages}
     \heading{xnemogcm}
     \textbf{https://github.com/rcaneill/xnemogcm}
     \begin{itemize}
@@ -327,7 +342,7 @@ state investigated using Numerical Experiments}
 
     \heading{Open source projects!}
     Please feel free to use, fork, and help on these new projects!
-  \end{alertblock}
+  \end{exampleblock}
 
   %\vspace{2in}
   
